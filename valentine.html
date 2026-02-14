@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rose: #ff6b9d;
+            --deep-rose: #c44569;
+            --cream: #fff5e4;
+            --gold: #d4af37;
+            --burgundy: #722f37;
+            --soft-pink: #ffd1dc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--soft-pink) 100%);
+            color: var(--burgundy);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Floating hearts background */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: var(--rose);
+            opacity: 0;
+            animation: float-up 8s infinite ease-in;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hero section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            animation: fade-in 1.5s ease-out;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--deep-rose);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.8rem;
+            color: var(--burgundy);
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        /* Interactive heart */
+        .main-heart {
+            width: 200px;
+            height: 200px;
+            margin: 40px auto;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .main-heart:hover {
+            transform: scale(1.2);
+            animation: none;
+        }
+
+        .main-heart::before,
+        .main-heart::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 100px;
+            height: 160px;
+            border-radius: 100px 100px 0 0;
+            background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+        }
+
+        .main-heart::before {
+            left: 50px;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+
+        .main-heart::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        /* Cards section */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 40px 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 107, 157, 0.2);
+            animation: slide-up 0.8s ease-out backwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.2s; }
+        .card:nth-child(2) { animation-delay: 0.4s; }
+        .card:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.3);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--deep-rose);
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: var(--burgundy);
+        }
+
+        /* Message section */
+        .message-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 209, 220, 0.6));
+            border-radius: 30px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            animation: fade-in 1s ease-out 0.8s backwards;
+        }
+
+        .message-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--deep-rose);
+            margin-bottom: 30px;
+        }
+
+        .message-section p {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: var(--burgundy);
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        /* Button */
+        .love-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+            color: white;
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+            text-decoration: none;
+        }
+
+        .love-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.6);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fade-in 0.3s ease;
+        }
+
+        .modal-content {
+            background: var(--cream);
+            padding: 50px;
+            border-radius: 30px;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: scale-in 0.4s ease;
+        }
+
+        @keyframes scale-in {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--deep-rose);
+            margin-bottom: 20px;
+        }
+
+        .modal-content p {
+            font-size: 1.3rem;
+            color: var(--burgundy);
+            line-height: 1.6;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2rem;
+            color: var(--burgundy);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero .subtitle {
+                font-size: 1.3rem;
+            }
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-bg" id="heartsContainer"></div>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Happy Valentine's Day</h1>
+            <p class="subtitle">To My Beloved</p>
+        </div>
+
+        <div class="main-heart" id="mainHeart"></div>
+
+        <div class="cards">
+            <div class="card" onclick="showModal('reason1')">
+                <div class="card-icon">💖</div>
+                <h3>Every Moment</h3>
+                <p>Every moment with you is a treasure I hold close to my heart.</p>
+            </div>
+            <div class="card" onclick="showModal('reason2')">
+                <div class="card-icon">🌹</div>
+                <h3>Your Smile</h3>
+                <p>Your smile brightens even my darkest days and fills my world with joy.</p>
+            </div>
+            <div class="card" onclick="showModal('reason3')">
+                <div class="card-icon">✨</div>
+                <h3>Together Forever</h3>
+                <p>With you, I've found my forever. You are my today and all of my tomorrows.</p>
+            </div>
+        </div>
+
+        <div class="message-section">
+            <h2>A Love Letter</h2>
+            <p>
+                On this Valentine's Day, I want you to know that loving you is the easiest thing I've ever done. 
+                You make every day feel like a celebration, and I'm grateful for every laugh, every adventure, 
+                and every quiet moment we share. You are my heart, my home, and my greatest blessing.
+            </p>
+            <button class="love-button" onclick="showModal('final')">Click for a Special Message 💕</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">×</span>
+            <h2 id="modalTitle">Special Message</h2>
+            <p id="modalText"></p>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            document.getElementById('heartsContainer').appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 8000);
+        }
+
+        setInterval(createHeart, 1000);
+
+        // Main heart click effect
+        document.getElementById('mainHeart').addEventListener('click', function() {
+            for(let i = 0; i < 20; i++) {
+                createHeart();
+            }
+        });
+
+        // Modal functions
+        const messages = {
+            reason1: {
+                title: "Cherished Memories 💝",
+                text: "Every laugh, every conversation, every shared silence - these are the moments I treasure most. You've turned ordinary days into extraordinary memories."
+            },
+            reason2: {
+                title: "You Light Up My Life ☀️",
+                text: "The way you smile, the sparkle in your eyes, the warmth of your presence - you bring light and love into my life in ways words can barely describe."
+            },
+            reason3: {
+                title: "Our Forever Begins Today 💍",
+                text: "With every sunrise we see together and every dream we build, I'm reminded that I want to spend all my tomorrows creating beautiful moments with you."
+            },
+            final: {
+                title: "I Love You ❤️",
+                text: "Today and every day, I choose you. I love you more than words can express, more than actions can show. You are my heart's home, and I'm so grateful to call you mine. Happy Valentine's Day, my love!"
+            }
+        };
+
+        function showModal(type) {
+            const modal = document.getElementById('modal');
+            const title = document.getElementById('modalTitle');
+            const text = document.getElementById('modalText');
+            
+            title.textContent = messages[type].title;
+            text.textContent = messages[type].text;
+            
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        // Close modal on outside click
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
